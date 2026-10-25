@@ -1,0 +1,144 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WorkNest | Workspace</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- LOGIN AND SIGN UP -->
+  <section id="authPage" class="auth-page">
+    <div class="auth-banner">
+      <div class="brand"><span class="logo">W</span> WorkNest</div>
+      <div>
+        <p class="eyebrow">YOUR PERSONAL WORKSPACE</p>
+        <h1>Plan your work.<br><span>Achieve more.</span></h1>
+        <p class="banner-text">A simple place to organize projects, manage tasks, and track your progress.</p>
+        <div class="benefit">✓ Keep your projects organized</div>
+        <div class="benefit">✓ Know what to do next</div>
+        <div class="benefit">✓ Track your daily progress</div>
+      </div>
+      <p class="banner-footer">Less confusion. More progress.</p>
+    </div>
+
+    <div class="auth-area">
+      <div class="auth-box">
+        <div class="auth-tabs">
+          <button id="loginTab" class="auth-tab active" type="button">Log In</button>
+          <button id="signupTab" class="auth-tab" type="button">Sign Up</button>
+        </div>
+
+        <form id="loginForm">
+          <h2>Welcome back!</h2>
+          <p class="muted">Log in to open your workspace.</p>
+          <label for="loginEmail">Email address</label>
+          <input id="loginEmail" type="email" placeholder="you@example.com" required>
+          <label for="loginPassword">Password</label>
+          <input id="loginPassword" type="password" placeholder="Your password" required>
+          <button class="button primary full" type="submit">Log In →</button>
+          <p class="auth-switch">Don't have an account? <button type="button" id="showSignup">Sign up</button></p>
+        </form>
+
+        <form id="signupForm" class="hidden">
+          <h2>Create an account</h2>
+          <p class="muted">Get started with WorkNest.</p>
+          <label for="signupName">Your name</label>
+          <input id="signupName" type="text" placeholder="Enter your name" minlength="2" required>
+          <label for="signupEmail">Email address</label>
+          <input id="signupEmail" type="email" placeholder="you@example.com" required>
+          <label for="signupPassword">Password</label>
+          <input id="signupPassword" type="password" placeholder="At least 6 characters" minlength="6" required>
+          <button class="button primary full" type="submit">Create Account →</button>
+          <p class="auth-switch">Already registered? <button type="button" id="showLogin">Log in</button></p>
+        </form>
+        <p class="security-note">Simple tools for better work.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- MAIN APP -->
+  <div id="appPage" class="app hidden">
+    <aside class="sidebar" id="sidebar">
+      <div class="brand"><span class="logo">W</span> WorkNest</div>
+      <p class="nav-label">WORKSPACE</p>
+
+      <nav>
+        <button class="nav-link active" data-page="dashboard"><span>▦</span> Dashboard</button>
+        <button class="nav-link" data-page="projects"><span>▣</span> Projects</button>
+        <button class="nav-link" data-page="tasks"><span>✓</span> My Tasks</button>
+        <button class="nav-link" data-page="kanban"><span>▤</span> Kanban Board</button>
+      </nav>
+
+      <div class="sidebar-bottom">
+        <button class="nav-link" data-page="settings"><span>⚙</span> Settings</button>
+        <div class="profile">
+          <div class="avatar" id="userAvatar">U</div>
+          <div class="profile-info">
+            <strong id="userName">User</strong>
+            <span id="userEmail">user@example.com</span>
+          </div>
+        </div>
+        <button class="nav-link logout" id="logoutButton"><span>↪</span> Log Out</button>
+      </div>
+    </aside>
+
+    <main class="main">
+      <header class="topbar">
+        <button id="menuButton" class="menu-button" aria-label="Open navigation">☰</button>
+        <div class="breadcrumb">WorkNest <span>/</span> <strong id="currentPageName">Dashboard</strong></div>
+        <div class="top-actions">
+          <input id="searchInput" type="search" placeholder="Search projects or tasks...">
+          <button class="button primary" id="addButton">＋ Add New</button>
+        </div>
+      </header>
+
+      <section class="content">
+        <div class="page-heading">
+          <div>
+            <h1 id="pageTitle">Dashboard</h1>
+            <p id="pageSubtitle">Here's what's happening in your workspace.</p>
+          </div>
+        </div>
+
+        <div class="help-tip" id="helpTip">
+          <span class="help-icon">✦</span>
+          <div>
+            <strong id="helpTitle">Quick tip</strong>
+            <p id="helpText">Create a project to organize your work.</p>
+          </div>
+        </div>
+
+        <div id="pageContent"></div>
+      </section>
+
+      <footer>Made for focused work <span>✦</span> WorkNest</footer>
+    </main>
+  </div>
+
+  <!-- ADD / EDIT FORM -->
+  <div id="modal" class="modal-overlay hidden">
+    <div class="modal">
+      <div class="modal-heading">
+        <div>
+          <h2 id="modalTitle">Add New</h2>
+          <p id="modalSubtitle">Enter the details below.</p>
+        </div>
+        <button id="closeModal" class="close-button" type="button">×</button>
+      </div>
+      <form id="itemForm">
+        <div id="formFields"></div>
+        <div class="modal-actions">
+          <button id="cancelModal" class="button secondary" type="button">Cancel</button>
+          <button class="button primary" type="submit">Save</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div id="toast" class="toast"></div>
+  <script src="script.js"></script>
+</body>
+</html>
